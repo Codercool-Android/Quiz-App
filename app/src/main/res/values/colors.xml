@@ -11,4 +11,6 @@
     <color name="green500">#76ff03</color>
     <color name="green700">#32cb00</color>
     <color name="green100">#b0ff57</color>
+    <color name="purple">#461a42</color>
+    <color name="purpleDark">#22001c</color>
 </resources>
