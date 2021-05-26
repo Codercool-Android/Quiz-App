@@ -3,6 +3,7 @@ package com.abeltarazona.test1
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 
@@ -12,36 +13,41 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*
-        Tipos de datos en Kotlin:
-        - Int -> 1,2,3...10000
-        - Double -> 0.3, 1.5, ...
-        - Boolean -> true, false
-        - String -> "Abel", "mesa", "Perú", "12310293" ....
-         */
+        // Inicializando variables locales
+        var nameUser : String = ""
 
-        val name : String = "Roberto"
-
+        // Inicializando componentes
         val tvTitleWelcome : TextView = findViewById(R.id.tvTitleWelcome)
-        tvTitleWelcome.text = "Bienvenido, $name"
-
         val btnTrue : Button = findViewById(R.id.btnTrue)
-
-        // CTRL + ESPACIO > Abrir sugerencias
-        // Lambdas - Prog. Funcional
-        // Builder
-        btnTrue.setOnClickListener {
-            Toast.makeText(this, "¡Ganaste!", Toast.LENGTH_LONG).show()
-        }
-
         val btnFalse: Button = findViewById(R.id.btnFalse)
+        val btnIngresar : Button = findViewById(R.id.btnIngresar)
+        val etName : EditText = findViewById(R.id.etName)
+
+        // Inicializando listeners
+        btnTrue.setOnClickListener {
+            evaluateNameUser(nameUser, true)
+        }
 
         btnFalse.setOnClickListener {
-            Toast.makeText(this, "¡Perdiste! \uD83D\uDE1E", Toast.LENGTH_LONG).show()
+            evaluateNameUser(nameUser, false)
         }
 
+        btnIngresar.setOnClickListener {
+            nameUser = etName.text.toString()
+            tvTitleWelcome.text = "Usuario jugando: $nameUser"
+        }
+    }
 
-
+    fun evaluateNameUser(name: String, isCorrect: Boolean) {
+        if (name.isEmpty()) {
+            Toast.makeText(this, "Por favor agrega un nombre de usuario", Toast.LENGTH_SHORT).show()
+        } else {
+            if (isCorrect) {
+                Toast.makeText(this, "¡Ganaste!", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "¡Perdiste! \uD83D\uDE1E", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
 

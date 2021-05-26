@@ -29,64 +29,90 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:text="Ingrese su nombre:" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginHorizontal="16dp"
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/etName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="text" />
 
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"/>
+
         <Button
+            android:id="@+id/btnIngresar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ingresar" />
 
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/tvTitleWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="@string/welcome" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="¿Es Canberra la capital de Australia?"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold" />
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        android:background="@drawable/container_top_rounded">
 
-        <Button
-            android:id="@+id/btnTrue"
+        <TextView
+            android:id="@+id/tvTitleWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Verdadero" />
+            android:textColor="@color/white"
+            tools:text="Usuario jugando: Test"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center" />
 
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="¿Es Canberra la capital de Australia?"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnFalse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Falso" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnTrue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Verdadero" />
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/btnFalse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Falso" />
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
-
 
 </LinearLayout>
