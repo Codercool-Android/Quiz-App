@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/grayBackground"
     tools:context=".MainActivity">
 
     <ImageView
@@ -30,6 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:textColor="@color/black"
+        android:textSize="13sp"
         android:text="Ingrese su nombre:" />
 
     <LinearLayout
@@ -66,13 +69,25 @@
         android:background="@drawable/container_top_rounded">
 
         <TextView
+            android:id="@+id/tvPlayingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Jugando"
+            android:textSize="13sp"
+            android:alpha="0.7"
+            android:visibility="invisible"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center" />
+
+        <TextView
             android:id="@+id/tvTitleWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            tools:text="Usuario jugando: Test"
+            tools:text="Abel Tarazona"
+            android:textStyle="bold"
             android:layout_marginBottom="15dp"
-            android:layout_marginTop="20dp"
             android:layout_gravity="center" />
 
         <LinearLayout
@@ -81,9 +96,12 @@
             android:gravity="center"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/tvTitleQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
+                android:layout_marginHorizontal="10dp"
+                android:textAlignment="center"
                 android:text="¿Es Canberra la capital de Australia?"
                 android:textColor="@color/white"
                 android:textSize="17sp"
@@ -110,6 +128,14 @@
                     android:layout_height="wrap_content"
                     android:text="Falso" />
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/purple_200"
+                android:text="Siguiente"/>
 
         </LinearLayout>
 
