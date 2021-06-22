@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -110,10 +110,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Acepto los términos y condiciones"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegister"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin" />
+        app:layout_constraintStart_toStartOf="@+id/btnRegister" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

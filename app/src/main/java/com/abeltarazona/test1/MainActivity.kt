@@ -14,6 +14,7 @@ enum class TypeSelector {
     FALSE
 }
 
+
 class MainActivity : AppCompatActivity() {
 
     var questionCorrect: Int = 0
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         // Inicializando variables locales
         var nameUser: String = ""
         var currentIndex: Int = 0
+
+        nameUser
 
         // Inicializando componentes
         val tvTitleWelcome: TextView = findViewById(R.id.tvTitleWelcome)
