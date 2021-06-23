@@ -31,6 +31,4 @@ abstract class QuizDatabase : RoomDatabase() {
         }
 
     }
-
-
 }

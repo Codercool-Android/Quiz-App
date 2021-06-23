@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -30,22 +33,29 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val toolbar: Toolbar = view.findViewById(R.id.toolbar)
+        configToolbar(view)
+
         val btnRegister: Button = view.findViewById(R.id.btnRegister)
 
-        (activity as AppCompatActivity).setSupportActionBar(toolbar)
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        (activity as AppCompatActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
-
-        toolbar.title = "Registro"
-
-        toolbar.setNavigationOnClickListener {
-            Navigation.findNavController(it).popBackStack()
-        }
+        val etUser: EditText = view.findViewById(R.id.etUser)
+        val etPassword: EditText = view.findViewById(R.id.etPassword)
+        val etPasswordConfirmation: EditText = view.findViewById(R.id.etPasswordConfirmation)
+        val cbTerms: CheckBox = view.findViewById(R.id.cbTermsAndConditions)
 
         btnRegister.setOnClickListener {
-            val testName = "User 1"
-            val testPassword = "Password123"
+
+            val testName = etUser.text.toString()
+            val testPassword = etPassword.text.toString()
+            val testConfirmation = etPasswordConfirmation.text.toString()
+
+            if (testPassword != testConfirmation) {
+                Toast.makeText(context, "Contraseña debe coincidir con la validación", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } else if (!cbTerms.isChecked) {
+                Toast.makeText(context, "Debe aceptar los términos y condiciones", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             registerUser(testName, testPassword)
         }
 
@@ -58,6 +68,22 @@ class RegisterFragment : Fragment() {
             quizDatabase.userDao().insert(User(name = testName, password = testPassword))
         }
 
+        Toast.makeText(context, "Registro exitoso!", Toast.LENGTH_SHORT).show()
+        Navigation.findNavController(requireView()).popBackStack()
+    }
+
+    private fun configToolbar(view: View) {
+        val toolbar: Toolbar = view.findViewById(R.id.toolbar)
+
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        toolbar.title = "Registro"
+
+        toolbar.setNavigationOnClickListener {
+            Navigation.findNavController(it).popBackStack()
+        }
     }
 
 }
