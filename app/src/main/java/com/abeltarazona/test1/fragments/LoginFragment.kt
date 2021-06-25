@@ -1,5 +1,6 @@
 package com.abeltarazona.test1.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,9 +9,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.abeltarazona.test1.MainActivity
 import com.abeltarazona.test1.R
+import com.abeltarazona.test1.SharedPreferenceUtil
 import com.abeltarazona.test1.data.QuizDatabase
 import com.abeltarazona.test1.data.entities.User
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +23,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class LoginFragment : Fragment() {
+
+    private var sharePreferenceUtil : SharedPreferenceUtil? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +36,10 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        sharePreferenceUtil = SharedPreferenceUtil().also {
+            it.setSharedPreference(requireContext())
+        }
 
         val btnRegister: TextView = view.findViewById(R.id.tvRegister)
 
@@ -45,23 +55,26 @@ class LoginFragment : Fragment() {
         }
 
         btnLogin.setOnClickListener {
+
+            val user = etUser.text.toString()
+            val password = etPassword.text.toString()
+
             GlobalScope.launch(Dispatchers.IO) {
                 val quizDatabase: QuizDatabase = QuizDatabase.provideDatabase(requireContext())
-                val listUser = quizDatabase.userDao().login("Anthony123", "12345")
-
-                // Sol 1
-                // bindData(listUser, etUser)
+                val listUser = quizDatabase.userDao().login(user, password)
 
                 // Sol 2
                 withContext(Dispatchers.Main) {
                     if (listUser.isNotEmpty()) {
-                        etUser.setText(listUser[0].name)
+                        // Usuario logueado
+                        sharePreferenceUtil!!.saveUser(User(name = user, password = password))
+                        startActivity(Intent(context, MainActivity::class.java))
                     } else {
-                        etUser.setText("No data")
+                        // Usuario no existente
+                        Toast.makeText(context, "Usuario no encontrado, registrese", Toast.LENGTH_SHORT).show()
                     }
                 }
 
-                Log.d("Codercool", listUser.toString())
             }
 
 
