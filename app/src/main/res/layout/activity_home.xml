@@ -47,56 +47,57 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etCompetidor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="24dp"
         android:hint="Competidor"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddCompetidor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnAddCompetidor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:text="+"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
+        app:layout_constraintBottom_toBottomOf="@+id/etCompetidor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintTop_toTopOf="@+id/etCompetidor" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnStartGame"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/baloo"
         android:text="Iniciar juego"
         android:textAllCaps="false"
-        android:fontFamily="@font/baloo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCompetidores"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
-        app:spanCount="3"
-        tools:itemCount="10"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem="@layout/item_competidor"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/btnStartGame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/etCompetidor"
+        app:spanCount="3"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_competidor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
