@@ -1,12 +1,17 @@
 package com.abeltarazona
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.abeltarazona.test1.SessionActivity
+import com.abeltarazona.test1.Utils.PUSH_DATA
 import com.abeltarazona.test1.adapters.PlayerAdapter
 import com.abeltarazona.test1.adapters.PlayerAdapters2
 import com.abeltarazona.test1.databinding.ActivityHomeBinding
+import com.abeltarazona.test1.launchActivity
+import java.util.ArrayList
 
 class HomeActivity : AppCompatActivity(), PlayerAdapter.Callback {
 
@@ -45,7 +50,13 @@ class HomeActivity : AppCompatActivity(), PlayerAdapter.Callback {
         }
 
         binding.btnStartGame.setOnClickListener {
-
+            if (players.isNotEmpty()) {
+                launchActivity<SessionActivity>() {
+                    putStringArrayListExtra(PUSH_DATA, players as ArrayList<String>)
+                }
+            } else {
+                Toast.makeText(this, "Debe agregar jugadores", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
